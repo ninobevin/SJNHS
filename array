@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Array</title>
+	</head>
+	<body>
+	Index : <input type="text" id="input">
+	<br>
+	<button onClick="show()" >Show</button>
+	<br>
+	<hr>
+	<br>
+	Add : <input type="text" id="elementInput"/> 
+	<br>
+	<button onClick="save()">Save</button>
+	<ul id="list_item">	
+	</ul>
+	</body>
+<script>
+	let array_sample = new Array();
+	
+	function show(){
+		let index = document.getElementById("input").value;
+		alert(array_sample[index]);	
+	}
+	
+	function save(){
+		let newInput = document.getElementById("elementInput").value;
+		array_sample.push(newInput);
+		document.getElementById("elementInput").value = "";
+		displayItems();
+	}
+	
+	function displayItems(){
+		let array_count =  array_sample.length;
+		let list_item = document.getElementById("list_item");
+		clearItems();
+		for(let i = 0; i < array_count ; i++){
+			let item = document.createElement("li");
+			item.innerHTML =  array_sample[i] + " | <button onClick='deleteItem("+i+")'>Delete</button>";
+			list_item.appendChild(item);
+		}
+	}
+	
+	function deleteItem(index){
+	    array_sample.splice(index,2);
+	    displayItems();
+	}
+
+	function clearItems(){
+		let list_item = document.getElementById("list_item");
+		list_item.innerHTML = "";
+	}
+	</script>
+
+
+<script>
+	
+
+
+</script>
+
+
+</html>
+
